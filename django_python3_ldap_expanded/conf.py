@@ -49,6 +49,11 @@ class LazySettings(object):
         default=PROTOCOL_TLS,
     )
 
+    LDAP_AUTH_CERT_FILE = LazySetting(
+        name="LDAP_AUTH_CERT_FILE",
+        default='',
+    )
+
     LDAP_AUTH_SEARCH_BASE = LazySetting(
         name="LDAP_AUTH_SEARCH_BASE",
         default="ou=people,dc=example,dc=com",
