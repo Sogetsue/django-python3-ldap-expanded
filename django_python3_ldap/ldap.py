@@ -173,10 +173,17 @@ def connection(**kwargs):
             "connect_timeout": settings.LDAP_AUTH_CONNECT_TIMEOUT,
         }
         if settings.LDAP_AUTH_USE_TLS:
-            server_args["tls"] = ldap3.Tls(
-                ciphers="ALL",
-                version=settings.LDAP_AUTH_TLS_VERSION,
-            )
+            if settings.LDAP_AUTH_CERT_FILE:
+                server_args["tls"] = ldap3.Tls(
+                    ciphers="ALL",
+                    version=settings.LDAP_AUTH_TLS_VERSION,
+                    ca_certs_path=settings.LDAP_AUTH_CERT_FILE,
+                )
+            else:
+                server_args["tls"] = ldap3.Tls(
+                    ciphers="ALL",
+                    version=settings.LDAP_AUTH_TLS_VERSION,
+                )
         server_pool.add(
             ldap3.Server(
                 u,
