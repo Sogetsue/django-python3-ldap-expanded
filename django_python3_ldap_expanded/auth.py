@@ -4,7 +4,7 @@ Django authentication backend.
 
 from django.contrib.auth.backends import ModelBackend
 
-from django_python3_ldap import ldap
+from django_python3_ldap_expanded import ldap
 
 
 class LDAPBackend(ModelBackend):

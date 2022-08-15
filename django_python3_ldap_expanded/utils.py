@@ -13,7 +13,7 @@ except ImportError:
 
 from django.utils.module_loading import import_string
 
-from django_python3_ldap.conf import settings
+from django_python3_ldap_expanded.conf import settings
 
 
 def import_func(func):

@@ -1,6 +1,6 @@
 from setuptools import setup, find_packages
 
-from django_python3_ldap import __version__
+from django_python3_ldap_expanded import __version__
 
 
 version_str = ".".join(str(n) for n in __version__)

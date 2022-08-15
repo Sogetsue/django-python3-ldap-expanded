@@ -1,7 +1,7 @@
 [run]
 source =
-    django_python3_ldap
-    django_python3_ldap_test
+    django_python3_ldap_expanded
+    django_python3_ldap_expanded_test
 
 [report]
 exclude_lines =

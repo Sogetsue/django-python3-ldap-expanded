@@ -8,8 +8,8 @@ import logging
 from inspect import getfullargspec
 from contextlib import contextmanager
 from django.contrib.auth import get_user_model
-from django_python3_ldap.conf import settings
-from django_python3_ldap.utils import import_func, format_search_filter
+from django_python3_ldap_expanded.conf import settings
+from django_python3_ldap_expanded.utils import import_func, format_search_filter
 
 
 logger = logging.getLogger(__name__)

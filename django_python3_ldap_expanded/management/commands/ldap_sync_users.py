@@ -2,9 +2,9 @@ from django.contrib.auth import get_user_model
 from django.core.management.base import BaseCommand, CommandError
 from django.db import transaction
 
-from django_python3_ldap import ldap
-from django_python3_ldap.conf import settings
-from django_python3_ldap.utils import group_lookup_args
+from django_python3_ldap_expanded import ldap
+from django_python3_ldap_expanded.conf import settings
+from django_python3_ldap_expanded.utils import group_lookup_args
 
 
 class Command(BaseCommand):

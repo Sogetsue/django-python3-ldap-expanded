@@ -10,9 +10,9 @@ from django.contrib.auth.models import User
 from django.conf import settings as django_settings
 from django.core.management import call_command, CommandError
 
-from django_python3_ldap.conf import settings
-from django_python3_ldap.ldap import connection
-from django_python3_ldap.utils import clean_ldap_name, import_func
+from django_python3_ldap_expanded.conf import settings
+from django_python3_ldap_expanded.ldap import connection
+from django_python3_ldap_expanded.utils import clean_ldap_name, import_func
 
 
 @skipUnless(settings.LDAP_AUTH_TEST_USER_USERNAME, "No settings.LDAP_AUTH_TEST_USER_USERNAME supplied.")
@@ -252,7 +252,7 @@ class TestLdap(TestCase):
 
     def testImportFunc(self):
         self.assertIs(clean_ldap_name, import_func(clean_ldap_name))
-        self.assertIs(clean_ldap_name, import_func('django_python3_ldap.utils.clean_ldap_name'))
+        self.assertIs(clean_ldap_name, import_func('django_python3_ldap_expanded.utils.clean_ldap_name'))
         self.assertTrue(callable(import_func('django.contrib.auth.get_user_model')))
 
         self.assertRaises(AttributeError, import_func, 123)

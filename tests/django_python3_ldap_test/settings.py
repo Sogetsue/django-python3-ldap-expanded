@@ -1,5 +1,5 @@
 """
-Django settings for django_python3_ldap_test project.
+Django settings for django_python3_ldap_expanded_test project.
 
 For more information on this file, see
 https://docs.djangoproject.com/en/1.7/topics/settings/
@@ -34,7 +34,7 @@ LDAP_AUTH_URL = ["ldap://ldap.forumsys.com:389"]
 LDAP_AUTH_SEARCH_BASE = "dc=example,dc=com"
 
 AUTHENTICATION_BACKENDS = (
-    "django_python3_ldap.auth.LDAPBackend",
+    "django_python3_ldap_expanded.auth.LDAPBackend",
 )
 
 
@@ -56,7 +56,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'django_python3_ldap',
+    'django_python3_ldap_expanded',
 )
 
 MIDDLEWARE = (

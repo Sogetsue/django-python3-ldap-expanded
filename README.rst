@@ -16,8 +16,8 @@ Installation
 ------------
 
 1. Install using ``pip install django-python3-ldap``.
-2. Add ``'django_python3_ldap'`` to your ``INSTALLED_APPS`` setting.
-3. Set your ``AUTHENTICATION_BACKENDS`` setting to ``("django_python3_ldap.auth.LDAPBackend",)``
+2. Add ``'django_python3_ldap_expanded'`` to your ``INSTALLED_APPS`` setting.
+3. Set your ``AUTHENTICATION_BACKENDS`` setting to ``("django_python3_ldap_expanded.auth.LDAPBackend",)``
 4. Configure the settings for your LDAP server(s) (see Available settings, below).
 5. Optionally, run ``./manage.py ldap_sync_users`` (or ``./manage.py ldap_sync_users <list of user lookups>``) to perform an initial sync of LDAP users.
 6. Optionally, run ``./manage.py ldap_promote <username>`` to grant superuser admin access to a given user.
@@ -62,24 +62,24 @@ Available settings
     # Path to a callable that takes a dict of {model_field_name: value},
     # returning a dict of clean model data.
     # Use this to customize how data loaded from LDAP is saved to the User model.
-    LDAP_AUTH_CLEAN_USER_DATA = "django_python3_ldap.utils.clean_user_data"
+    LDAP_AUTH_CLEAN_USER_DATA = "django_python3_ldap_expanded.utils.clean_user_data"
 
     # Path to a callable that takes a user model, a dict of {ldap_field_name: [value]}
     # a LDAP connection object (to allow further lookups), and saves any additional
     # user relationships based on the LDAP data.
     # Use this to customize how data loaded from LDAP is saved to User model relations.
     # For customizing non-related User model fields, use LDAP_AUTH_CLEAN_USER_DATA.
-    LDAP_AUTH_SYNC_USER_RELATIONS = "django_python3_ldap.utils.sync_user_relations"
+    LDAP_AUTH_SYNC_USER_RELATIONS = "django_python3_ldap_expanded.utils.sync_user_relations"
 
     # Path to a callable that takes a dict of {ldap_field_name: value},
     # returning a list of [ldap_search_filter]. The search filters will then be AND'd
     # together when creating the final search filter.
-    LDAP_AUTH_FORMAT_SEARCH_FILTERS = "django_python3_ldap.utils.format_search_filters"
+    LDAP_AUTH_FORMAT_SEARCH_FILTERS = "django_python3_ldap_expanded.utils.format_search_filters"
 
     # Path to a callable that takes a dict of {model_field_name: value}, and returns
     # a string of the username to bind to the LDAP server.
     # Use this to support different types of LDAP server.
-    LDAP_AUTH_FORMAT_USERNAME = "django_python3_ldap.utils.format_username_openldap"
+    LDAP_AUTH_FORMAT_USERNAME = "django_python3_ldap_expanded.utils.format_username_openldap"
 
     # Sets the login domain for Active Directory users.
     LDAP_AUTH_ACTIVE_DIRECTORY_DOMAIN = None
@@ -105,20 +105,20 @@ For simple usernames (e.g. "username"):
 
 .. code:: python
 
-    LDAP_AUTH_FORMAT_USERNAME = "django_python3_ldap.utils.format_username_active_directory"
+    LDAP_AUTH_FORMAT_USERNAME = "django_python3_ldap_expanded.utils.format_username_active_directory"
 
 For down-level login name formats (e.g. "DOMAIN\\username"):
 
 .. code:: python
 
-    LDAP_AUTH_FORMAT_USERNAME = "django_python3_ldap.utils.format_username_active_directory"
+    LDAP_AUTH_FORMAT_USERNAME = "django_python3_ldap_expanded.utils.format_username_active_directory"
     LDAP_AUTH_ACTIVE_DIRECTORY_DOMAIN = "DOMAIN"
 
 For user-principal-name formats (e.g. "user@domain.com"):
 
 .. code:: python
 
-    LDAP_AUTH_FORMAT_USERNAME = "django_python3_ldap.utils.format_username_active_directory_principal"
+    LDAP_AUTH_FORMAT_USERNAME = "django_python3_ldap_expanded.utils.format_username_active_directory_principal"
     LDAP_AUTH_ACTIVE_DIRECTORY_DOMAIN = "domain.com"
 
 Depending on how your Active Directory server is configured, the following additional settings may match your server
@@ -193,7 +193,7 @@ Print information about failed logins to your console by adding the following to
             },
         },
         "loggers": {
-            "django_python3_ldap": {
+            "django_python3_ldap_expanded": {
                 "handlers": ["console"],
                 "level": "INFO",
             },
@@ -214,7 +214,7 @@ callable.
     LDAP_AUTH_FORMAT_SEARCH_FILTERS = "path.to.your.custom_format_search_filters"
 
     # path/to/your/module.py
-    from django_python3_ldap.utils import format_search_filters
+    from django_python3_ldap_expanded.utils import format_search_filters
 
     def custom_format_search_filters(ldap_fields):
         # Add in simple filters.
